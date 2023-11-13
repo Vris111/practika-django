@@ -17,15 +17,7 @@ def index(request):
 
 class BookListView(generic.ListView):
     model = Book
-    context_object_name = 'my_book_list'
-    template_name = 'books/my_arbitrary_template_name_list.html'
-    def get_queryset(self):
-        return Book.objects.filter(title__icontains='war')[:5]
-
-    def get_context_data(self, **kwargs):
-        context = super(BookListView, self).get_context_data(**kwargs)
-        context['some_data'] = 'This is just some data'
-        return context
+    paginate_by = 10
 
 class BookDetailView(generic.DetailView):
     model = Book
