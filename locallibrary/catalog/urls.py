@@ -19,5 +19,5 @@ urlpatterns = [
     path('bookinstance/create/', views.BookInstanceCreate.as_view(), name='bookinstance-create'),
     path(r'borrowed/', views.LoanedBooksAllListView.as_view(), name='all-borrowed'),
     path('book/create/', views.BookCreate.as_view(), name='book-create'),
-
+    path('author/create/', views.AuthorCreate.as_view(), name='author-create'),
 ]
