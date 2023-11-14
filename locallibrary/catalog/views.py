@@ -1,7 +1,12 @@
 from django.shortcuts import render
+from ipalib.errors import ValidationError
+from . import forms
 from .models import Book, Author, BookInstance, Genre
 from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
+import datetime
+from django.utils.translation import ugettext_lazy as _
+
 
 def index(request):
     num_books = Book.objects.all().count()
