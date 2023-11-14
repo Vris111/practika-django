@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
 </head>
 <body>
+{% block sidebar %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2">{% block sidebar %}
+        <div class="col-sm-2">
             <ul class="sidebar-nav">
                 <ol><a href="{% url 'index' %}">Home</a></ol>
                 <ol><a href="{% url 'books' %}">All books</a></ol>
@@ -22,7 +23,7 @@
             </ul>
             {% if user.is_authenticated %}
             <ul class="sidebar-nav">
-                <ol>User: {{ user.get_username }}</ol>
+                <li>User: {{ user.get_username }}</li>
                 <ol><a href="{% url 'my-borrowed' %}">My Borrowed</a></ol>
                 <ol><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></ol>
             </ul>
@@ -34,10 +35,12 @@
             <hr>
             <ul class="sidebar-nav">
                 <li>Staff</li>
-                <li><a href="{% url 'all-borrowed' %}">All borrowed</a></li>
+                <ol><a href="{% url 'all-borrowed' %}">All borrowed</a></ol>
             </ul>
             {% endif %}
-        </div> {% endblock %}
+        </div>
+        {% endblock %}
+
     </div>
     <div class="col-sm-10 ">{% block content %}{% endblock %}
         {% block pagination %}{% if is_paginated %}
