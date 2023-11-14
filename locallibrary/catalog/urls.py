@@ -1,22 +1,5 @@
-"""
-URL configuration for locallibrary project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.urls import path
 from . import views
-
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -31,5 +14,8 @@ urlpatterns = [
     path('author/<int:pk>/delete/', views.AuthorDelete.as_view(), name='author-delete'),
     path('bookinstances/', views.BookInstanceListView.as_view(), name='bookinstances'),
     path('bookinstance/<uuid:pk>', views.BookInstanceDetailView.as_view(), name='bookinstance-detail'),
-
+    path('bookinstance/<uuid:pk>/update/', views.BookInstanceUpdate.as_view(), name='bookinstance-update'),
+    path('bookinstance/<uuid:pk>/delete/', views.BookInstanceDelete.as_view(), name='bookinstance-delete'),
+    path('bookinstance/create/', views.BookInstanceCreate.as_view(), name='bookinstance-create'),
+    path(r'borrowed/', views.LoanedBooksAllListView.as_view(), name='all-borrowed'),
 ]
