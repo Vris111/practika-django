@@ -3,7 +3,7 @@ import uuid
 from datetime import date
 from django.conf import settings
 from django.urls import reverse
-from django.contrib.auth.models import User
+
 
 class Genre(models.Model):
     name = models.CharField(

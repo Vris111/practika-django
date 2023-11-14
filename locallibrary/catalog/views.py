@@ -1,11 +1,8 @@
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
-from ipalib.errors import ValidationError
-from . import forms
-from .models import Book, Author, BookInstance, Genre
+from .models import Book, Author, BookInstance
 from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
-import datetime
-from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
