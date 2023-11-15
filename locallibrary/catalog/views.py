@@ -12,7 +12,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 def index(request):
-    num_books = Book.objects.filter(title__icontains='1')
+    num_books = Book.objects.filter(title__icontains='1').count()
     num_instances = BookInstance.objects.all().count()
     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
     num_authors = Author.objects.count()
